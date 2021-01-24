@@ -37,13 +37,23 @@ function displaySelectorsFunction(){
 }
 
 //task 5
-document.getElementById("yellow_square").addEventListener("click", function() {
-    alert("Hello World!");
-});
-document.getElementById("yellow_square").removeEventListener();
-document.getElementById("yellow_square").addEventListener("click", function() {
-    document.getElementById("yellow_square").style.visibility = "hidden";
-});
+var x = document.getElementById("yellow_square");
+x.addEventListener("click", myFunction);
+
+
+
+function myFunction() {
+    alert ("Hello!");
+    x.removeEventListener("click", myFunction);
+    x.addEventListener("click", someOtherFunction);
+}
+
+function someOtherFunction() {
+    x.style.visibility = "hidden";
+}
+
+
+
 
 
 
