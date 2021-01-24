@@ -37,15 +37,15 @@ function displaySelectorsFunction(){
 }
 
 //task 5
-function clickOnYellowSquare(){
-    alert("Hello!");
-  //  let actionCompleted = true;
-    onclick = displayYellowSquare();
+document.getElementById("yellow_square").addEventListener("click", function() {
+    alert("Hello World!");
+});
+document.getElementById("yellow_square").removeEventListener();
+document.getElementById("yellow_square").addEventListener("click", function() {
+    document.getElementById("yellow_square").style.visibility = "hidden";
+});
 
-}
-function displayYellowSquare(){
-//if(actionCompleted){
-    let obj = document.getElementById("yellow_square");
-    obj.style.visibility = obj.style.visibility == "hidden" ? "visible" : "hidden";
 
-}
+
+
+
