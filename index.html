@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--Task 1-->
+<div class="task">
+  <h2 class="title">Task 1</h2>
+<div class="square_container">
+  <div id="black_square1" class="black_square"></div>
+</div>
+<div class="buttons_container">
+  <button class="buttons" id="btn1" onclick="displayNoneFunction()">Display none</button>
+  <button class="buttons" id="btn2" onclick="removeFunction()">Delete</button>
+  <button class="buttons" id="btn3" onclick="hideFunction()">Hide</button>
+</div>
+  <hr class="line">
+  </div>
+
+<!--Task 2-->
+<div class="task">
+  <h2 class="title">Task 2</h2>
+  <div class="square_container">
+    <div id="black_square2" class="black_square"></div>
+  </div>
+  <div class="buttons_container">
+  <button class="buttons" id="btn4" onclick="displayFunction()">Click</button>
+  </div>
+</div>
+
+<!--Task 3-->
+<div class="task">
+  <h2 class="title">Task 3</h2>
+  <div class="square_container">
+    <div class="black_square five_squares"></div>
+    <div class="black_square five_squares"></div>
+    <div class="black_square five_squares"></div>
+    <div class="black_square five_squares"></div>
+    <div class="black_square five_squares"></div>
+  </div>
+  <div class="buttons_container">
+    <button class="buttons" id="btn5" onclick="displayFunctionForSquares()">Click</button>
+  </div>
+</div>
+
+<!--Task 4-->
+<div class="task">
+  <h2 class="title">Task 4</h2>
+
+  <form id = "form_data" class="form_container">
+    <label class="label_title">Enter a CSS selector</label>
+    <input  id = "input_value" class="input_class" type="text">
+  </form>
+
+  <div class="buttons_container">
+    <button class="buttons" id="btn6" onclick="displaySelectorsFunction()">Click</button>
+  </div>
+</div>
+
+<!--Task 5-->
+<div class="task">
+  <h2 class="title">Task 5</h2>
+  <div class="square_container">
+    <div id ="yellow_square" class="black_square yellow_square" onclick="clickOnYellowSquare()"></div>
+  </div>
+</div>
+
+<!--Task 6-->
+
+  <script src="js/main.js"></script>
+</body>
+</html>
