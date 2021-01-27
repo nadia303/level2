@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onmousemove = "showMouseCoords(event)">
+
 <!--Task 1-->
 <div class="task">
   <h2 class="title">Task 1</h2>
@@ -72,7 +73,85 @@
 </div>
 
 <!--Task 6-->
+<div class="task">
+  <h2 class="title">Task 6</h2>
+  <div class="square_container">
+    <div id="red_square" class="black_square red_small_square"></div>
+  </div>
+  <div class="buttons_container">
+    <button class="buttons" id="btn7">Click</button>
+  </div>
+</div>
 
+<!--Task 7-->
+<div class="task">
+  <h2 class="title">Task 7</h2>
+  <div class="square_container">
+    <div id="green_rect" class="black_square green_small_rect"></div>
+  </div>
+  <form id = "form_input" class="form_container">
+    <input  id = "input_value_t7" class="input_class" type="text" placeholder="Type here"
+    onfocus="showGreenSquare()" onkeypress = "hideGreenSquare()">
+  </form>
+</div>
+
+<!--Task 8-->
+<div class="task">
+  <h2 class="title">Task 8</h2>
+  <div class="square_container">
+    <img id = "picture_t8" src = "" alt = "picture">
+  </div>
+
+  <form class="form_container">
+    <input  id = "input_value_t8" class="input_class" type="text" placeholder="Enter the image's link here">
+  </form>
+
+  <div class="buttons_container">
+    <button class="buttons" id="btn8" onclick="loadImage()">Load image</button>
+  </div>
+</div>
+
+<!--Task 9-->
+<div class="task">
+  <h2 class="title">Task 9</h2>
+  <div id = "pictures_container" class="square_container">  </div>
+
+  <textarea id="myTextarea" class="text_area_t9"></textarea>
+
+  <div class="buttons_container">
+    <button class="buttons" id="btn9" onclick="loadImages()">Load images</button>
+  </div>
+</div>
+
+<!--Task 10, Task 11, Task 12-->
+<div class = "top_square" >
+    <p id = "x_y_coordinates" class = "coordinates"></p>
+    <p id = "geolocation" class = "coordinates geo"></p>
+    <p id = "language" class = "coordinates lan"></p>
+    </div>
+
+<!--Task 13-->
+<div class="task">
+  <h2 class="title">Task 13</h2>
+  <div id = "inputs_container" class="square_container">  </div>
+<div class = "text_block">
+  <label class="label_title">Local storage</label>
+  <textarea  id = "firstText" class="text_area_t9 text_area_t13" onload="getInformation1()"></textarea>
+</div>
+
+  <div class = "text_block">
+    <label class="label_title">Cookies</label>
+  <textarea id="secondText" class="text_area_t9 text_area_t13"></textarea>
+  </div>
+
+  <div class = "text_block">
+    <label class="label_title">Session storage</label>
+  <textarea id="thirdText" class="text_area_t9 text_area_t13"></textarea>
+  </div>
+
+  <div id="result"></div>
+
+</div>
   <script src="js/main.js"></script>
 </body>
 </html>
