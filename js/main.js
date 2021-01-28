@@ -3,6 +3,7 @@ function displayNoneFunction(){
 let obj = document.getElementById("black_square1");
 obj.style.display = "none";
 }
+
 function removeFunction(){
     let obj = document.getElementById("black_square1");
     obj.remove();
@@ -129,18 +130,81 @@ function showPosition(position) {
 }
 
     //task 13
-//Local storage
-
-
-let text1 = document.getElementById("firstText").value;
-console.log(text1);
-if (typeof(Storage) !== "undefined") {
-    // Store
-    localStorage.setItem("key1", text1);
+let first_block =  document.getElementById("firstText").value;
+function newFunction(){
+    localStorage.setItem("lastname", "first_block");
+    document.getElementById("firstText").innerHTML = localStorage.getItem("lastname");
 
 }
 
-function getInformation1(){
-    document.getElementById("firstText").innerHTML = localStorage.getItem("key1");
+
+//task 14
+let goTopBtn = document.querySelector(".back_to_top");
+
+window.addEventListener("scroll", scrollFunction);
+goTopBtn.addEventListener("click", backToTop);
+
+function scrollFunction() {
+    let scrolled = window.pageYOffset;
+    let height = document.body.clientHeight;
+
+    if (scrolled > (0.5 * height)) {
+        goTopBtn.classList.add("back_to_top-show");
+    }
+    else{
+        goTopBtn.classList.remove("back_to_top-show");
+    }
 }
 
+function backToTop() {
+    if (window.pageYOffset > 0) {
+        window.scrollBy(0, -50);
+        setTimeout(backToTop, 50);
+    }
+}
+
+//task 15
+let outer_block = document.getElementById( "outer");
+outer_block.addEventListener("click", showMessage1);
+let inner_block = document.getElementById( "inner");
+inner_block.addEventListener("click", event => showMessage2(event));
+
+function showMessage1(){
+    alert("OUTER BLOCK");
+}
+
+function showMessage2(event){
+    alert("INNER BLOCK");
+   event.stopPropagation();
+}
+
+//task 16
+let btn16 = document.getElementById( "btn16");
+let big_square = document.getElementById( "big_square");
+btn16.addEventListener("click", showBigTransparentSquare);
+big_square.addEventListener("click", hideBigTransparentSquare)
+
+function showBigTransparentSquare(){
+    big_square.classList.add("big_transparent_square_show");
+   document.body.style.overflow = "hidden";
+}
+
+function hideBigTransparentSquare(){
+    big_square.classList.remove("big_transparent_square_show");
+    document.body.style.overflow = "visible";
+}
+
+//task 17
+let form_element = document.getElementById( "form_t17");
+form_element.addEventListener("submit", event => notReload(event));
+
+
+function notReload(event){
+    event.preventDefault()
+}
+
+//task 18
+document.getElementById("btn18")
+    .addEventListener("click",function(){
+        document.getElementById("inputFile_t18").click();
+    },false);
