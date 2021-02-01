@@ -1,38 +1,38 @@
 //task 1
-function displayNoneFunction(){
-let obj = document.getElementById("black_square1");
-obj.style.display = "none";
+function displayNoneFunction() {
+    let obj = document.getElementById("black_square1");
+    obj.style.display = "none";
 }
 
-function removeFunction(){
+function removeFunction() {
     let obj = document.getElementById("black_square1");
     obj.remove();
 }
 
-function hideFunction(){
-  let obj =  document.getElementById("black_square1");
-      obj.hidden = true;
+function hideFunction() {
+    let obj = document.getElementById("black_square1");
+    obj.hidden = true;
 }
 
 //task 2
-function displayFunction(){
+function displayFunction() {
     let obj = document.getElementById("black_square2");
     obj.style.visibility = obj.style.visibility == "hidden" ? "visible" : "hidden";
 }
 
 //task 3
-function displayFunctionForSquares(){
+function displayFunctionForSquares() {
     let objs = document.getElementsByClassName("five_squares");
-    for ( let i = 0; i < objs.length; i++) {
+    for (let i = 0; i < objs.length; i++) {
         objs[i].style.visibility = objs[i].style.visibility == "hidden" ? "visible" : "hidden";
     }
 }
 
 //task 4
-function displaySelectorsFunction(){
+function displaySelectorsFunction() {
     let selector = document.getElementById("input_value").value;
     let objs = document.querySelectorAll(selector)
-    for ( let i = 0; i < objs.length; i++) {
+    for (let i = 0; i < objs.length; i++) {
         objs[i].style.visibility = objs[i].style.visibility == "hidden" ? "visible" : "hidden";
     }
 }
@@ -42,7 +42,7 @@ let obj = document.getElementById("yellow_square");
 obj.addEventListener("click", sayHello);
 
 function sayHello() {
-    alert ("Hello!");
+    alert("Hello!");
     obj.removeEventListener("click", sayHello);
     obj.addEventListener("click", hideYellowSquare);
 }
@@ -57,11 +57,11 @@ btn.addEventListener("mouseover", hideRedSquare);
 btn.addEventListener("mouseout", showRedSquare);
 let red_square = document.getElementById("red_square");
 
-function hideRedSquare(){
-   red_square.style.visibility = "hidden";
+function hideRedSquare() {
+    red_square.style.visibility = "hidden";
 }
 
-function showRedSquare(){
+function showRedSquare() {
     red_square.style.visibility = "visible";
 }
 
@@ -72,12 +72,12 @@ function showGreenSquare() {
     green_square.style.visibility = "visible";
 }
 
-function hideGreenSquare(){
+function hideGreenSquare() {
     green_square.style.visibility = "hidden";
 }
 
 //task 8
-function loadImage(){
+function loadImage() {
     let link = document.getElementById("input_value_t8").value;
     let picture = document.getElementById("picture_t8");
     picture.src = link;
@@ -85,58 +85,61 @@ function loadImage(){
 }
 
 //task 9
-function loadImages(){
+function loadImages() {
     let obj = document.getElementById("myTextarea").value;
-    let pictures = document.getElementById(  "pictures_container");
+    let pictures = document.getElementById("pictures_container");
     let links = obj.split("\n");
-  //  picture.src = links;
- //   picture.style.display = "block";
 
-  for ( let i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i++) {
 
-      let img = document.createElement("img");
-      img.src = links[i];
-      img.style.height  = "200px";
-      img.style.paddingBottom = "10px";
-      pictures.appendChild(img);
+        let img = document.createElement("img");
+        img.src = links[i];
+        img.style.height = "200px";
+        img.style.paddingBottom = "10px";
+        pictures.appendChild(img);
 
-   }
+    }
 }
 
 
 //task 10
 function showMouseCoords(event) {
-   let x = event.clientX;
-   let y = event.clientY;
-   document.getElementById("x_y_coordinates").innerHTML ="X: " + x + ", Y: " + y;
+    let x = event.clientX;
+    let y = event.clientY;
+    document.getElementById("x_y_coordinates").innerHTML = "X: " + x + ", Y: " + y;
 }
 
 //task 11
-    let lang = "Language: " + navigator.language;
-    document.getElementById("language").innerHTML = lang;
+let lang = "Language: " + navigator.language;
+document.getElementById("language").innerHTML = lang;
 
 //task 12
-let location_coord  = document.getElementById("geolocation");
+let location_coord = document.getElementById("geolocation");
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        location_coord.innerHTML = "Not supported";
-    }
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+    location_coord.innerHTML = "Not supported";
+}
 
 function showPosition(position) {
     location_coord.innerHTML = "Ш: " + position.coords.latitude + "</br>"
         + " Д: " + position.coords.longitude;
 }
 
-    //task 13
-let first_block =  document.getElementById("firstText").value;
-function newFunction(){
-    localStorage.setItem("lastname", "first_block");
-    document.getElementById("firstText").innerHTML = localStorage.getItem("lastname");
+//task 13
+document.getElementById("firstText").innerHTML = localStorage["firstText"] || "Type here";
+document.getElementById("secondText").innerHTML = document.cookie.split("=")[1] || "Type here";
+document.getElementById("thirdText").innerHTML = sessionStorage["thirdText"] || "Type here";
 
-}
+setInterval(function () {
+    localStorage["firstText"] = document.getElementById("firstText").innerHTML;
+    let expiry = new Date();
+    expiry.setDate(expiry.getDate() + 100);
+    document.cookie = "secondText" + "=" + document.getElementById("secondText").innerHTML;
+    sessionStorage["thirdText"] = document.getElementById("thirdText").innerHTML;
 
+}, 1000);
 
 //task 14
 let goTopBtn = document.querySelector(".back_to_top");
@@ -150,8 +153,7 @@ function scrollFunction() {
 
     if (scrolled > (0.5 * height)) {
         goTopBtn.classList.add("back_to_top-show");
-    }
-    else{
+    } else {
         goTopBtn.classList.remove("back_to_top-show");
     }
 }
@@ -164,47 +166,61 @@ function backToTop() {
 }
 
 //task 15
-let outer_block = document.getElementById( "outer");
+let outer_block = document.getElementById("outer");
 outer_block.addEventListener("click", showMessage1);
-let inner_block = document.getElementById( "inner");
+let inner_block = document.getElementById("inner");
 inner_block.addEventListener("click", event => showMessage2(event));
 
-function showMessage1(){
+function showMessage1() {
     alert("OUTER BLOCK");
 }
 
-function showMessage2(event){
+function showMessage2(event) {
     alert("INNER BLOCK");
-   event.stopPropagation();
+    event.stopPropagation();
 }
 
 //task 16
-let btn16 = document.getElementById( "btn16");
-let big_square = document.getElementById( "big_square");
+let btn16 = document.getElementById("btn16");
+let big_square = document.getElementById("big_square");
 btn16.addEventListener("click", showBigTransparentSquare);
 big_square.addEventListener("click", hideBigTransparentSquare)
 
-function showBigTransparentSquare(){
+function showBigTransparentSquare() {
     big_square.classList.add("big_transparent_square_show");
-   document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 }
 
-function hideBigTransparentSquare(){
+function hideBigTransparentSquare() {
     big_square.classList.remove("big_transparent_square_show");
     document.body.style.overflow = "visible";
 }
 
 //task 17
-let form_element = document.getElementById( "form_t17");
+let form_element = document.getElementById("form_t17");
 form_element.addEventListener("submit", event => notReload(event));
 
 
-function notReload(event){
+function notReload(event) {
     event.preventDefault()
 }
 
 //task 18
-document.getElementById("btn18")
-    .addEventListener("click",function(){
-        document.getElementById("inputFile_t18").click();
-    },false);
+const fileInput = document.querySelector("input[type=file]");
+const filenameContainer = document.querySelector("#filename");
+const dropzone = document.getElementById("upload_div");
+
+fileInput.addEventListener("change", function () {
+    filenameContainer.innerText = fileInput.value.split('\\').pop();
+});
+
+fileInput.addEventListener("dragenter", function () {
+    dropzone.classList.add("dragover");
+});
+
+fileInput.addEventListener("dragleave", function () {
+    dropzone.classList.remove("dragover");
+});
+
+
+

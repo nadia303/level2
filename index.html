@@ -135,18 +135,18 @@
     <h2 class="title">Task 13</h2>
     <div class="square_container" id="inputs_container"></div>
     <div class="text_block">
-        <label class="label_title">Local storage</label>
-        <textarea class="text_area_t9 text_area_t13" id="firstText" onload="newFunction() "></textarea>
+        <label class="label_title title_t13">Local storage</label>
+        <div class="text_area_t13" contentEditable=true id="firstText">Type here</div>
     </div>
 
     <div class="text_block">
-        <label class="label_title">Cookies</label>
-        <textarea class="text_area_t9 text_area_t13" id="secondText"></textarea>
+        <label class="label_title title_t13">Cookies</label>
+        <div class="text_area_t13" contentEditable=true id="secondText">Type here</div>
     </div>
 
     <div class="text_block">
-        <label class="label_title">Session storage</label>
-        <textarea class="text_area_t9 text_area_t13" id="thirdText"></textarea>
+        <label class="label_title title_t13">Session storage</label>
+        <div class="text_area_t13" contentEditable=true id="thirdText">Type here</div>
     </div>
 
 </div>
@@ -184,11 +184,13 @@
 
 <!--Task 18-->
 <div class="task">
-  <h2 class="title">Task 18</h2>
+    <h2 class="title">Task 18</h2>
 
-    <input type="file" class="inputFile" id="inputFile_t18">
-    <button class="input_btn" id="btn18">Upload a file</button>
-
+    <label for="upload_file" id="upload_label">
+        <div id="upload_div">Click or drop here</div>
+        <input id="upload_file" type="file">
+    </label>
+    <p id="filename"></p>
 </div>
 
 <script src="js/main.js"></script>
