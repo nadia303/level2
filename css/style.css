@@ -60,12 +60,8 @@ html {
     background-color: #39797b;
 }
 
-.line {
-    display: block;
-    width: 100%;
-    height: 3px;
-    color: blue;
-    border: none;
+.hidden {
+    visibility: hidden;
 }
 
 .five_squares {
@@ -144,8 +140,9 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: fixed;
+    padding: 10px 20px;
 }
 
 .coordinates {
@@ -197,7 +194,6 @@ html {
     color: white;
     display: none;
     margin-bottom: 10px;
-
 }
 
 .back_to_top:hover {

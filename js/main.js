@@ -1,17 +1,23 @@
 //task 1
 function displayNoneFunction() {
     let obj = document.getElementById("black_square1");
-    obj.style.display = "none";
+    if (obj) {
+        obj.style.display = "none";
+    }
 }
 
 function removeFunction() {
     let obj = document.getElementById("black_square1");
-    obj.remove();
+    if (obj) {
+        obj.remove();
+    }
 }
 
 function hideFunction() {
     let obj = document.getElementById("black_square1");
-    obj.hidden = true;
+    if (obj) {
+        obj.classList.add("hidden");
+    }
 }
 
 //task 2
@@ -91,7 +97,6 @@ function loadImages() {
     let links = obj.split("\n");
 
     for (let i = 0; i < links.length; i++) {
-
         let img = document.createElement("img");
         img.src = links[i];
         img.style.height = "200px";
@@ -101,12 +106,10 @@ function loadImages() {
     }
 }
 
-
 //task 10
-function showMouseCoords(event) {
-    let x = event.clientX;
-    let y = event.clientY;
-    document.getElementById("x_y_coordinates").innerHTML = "X: " + x + ", Y: " + y;
+document.onmousemove = (event) => {
+    document.getElementById("x_y_coordinates").innerHTML =
+        `X: ${event.clientX}, Y: ${event.clientY}`;
 }
 
 //task 11
@@ -123,23 +126,45 @@ if (navigator.geolocation) {
 }
 
 function showPosition(position) {
-    location_coord.innerHTML = "Ш: " + position.coords.latitude + "</br>"
-        + " Д: " + position.coords.longitude;
+    location_coord.innerHTML = `Ш: ${position.coords.latitude}</br>
+        Д: ${position.coords.longitude}`;
 }
+
 
 //task 13
 document.getElementById("firstText").innerHTML = localStorage["firstText"] || "Type here";
-document.getElementById("secondText").innerHTML = document.cookie.split("=")[1] || "Type here";
+document.getElementById("secondText").innerHTML = getCookie("secondText") || "Type here";
 document.getElementById("thirdText").innerHTML = sessionStorage["thirdText"] || "Type here";
 
-setInterval(function () {
-    localStorage["firstText"] = document.getElementById("firstText").innerHTML;
-    let expiry = new Date();
-    expiry.setDate(expiry.getDate() + 100);
-    document.cookie = "secondText" + "=" + document.getElementById("secondText").innerHTML;
-    sessionStorage["thirdText"] = document.getElementById("thirdText").innerHTML;
+window.addEventListener("unload", dataToStorage);
 
-}, 1000);
+function dataToStorage() {
+    localStorage.setItem("firstText", document.getElementById("firstText").innerHTML);
+    document.cookie = "secondText" + "=" + document.getElementById("secondText").innerHTML;
+    sessionStorage.setItem("thirdText", document.getElementById("thirdText").innerHTML);
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let elements = decodedCookie.split(';');
+    for (let i = 0; i < elements.length; i++) {
+        let oneCookie = elements[i];
+        if ((oneCookie.indexOf(name) == 0)) {
+            return oneCookie.substring(name.length, oneCookie.length);
+        }
+        return "Type here";
+    }
+}
+
+// another option
+// setInterval(function () {
+//     localStorage["firstText"] = document.getElementById("firstText").innerHTML;
+//     document.cookie = "secondText" + "=" + document.getElementById("secondText").innerHTML;
+//     sessionStorage["thirdText"] = document.getElementById("thirdText").innerHTML;
+//
+// }, 1000);
+
 
 //task 14
 let goTopBtn = document.querySelector(".back_to_top");
@@ -207,11 +232,11 @@ function notReload(event) {
 
 //task 18
 const fileInput = document.querySelector("input[type=file]");
-const filenameContainer = document.querySelector("#filename");
 const dropzone = document.getElementById("upload_div");
 
 fileInput.addEventListener("change", function () {
-    filenameContainer.innerText = fileInput.value.split('\\').pop();
+    dropzone.innerHTML = fileInput.value.split('\\').pop();
+    dropzone.classList.add("dragover");
 });
 
 fileInput.addEventListener("dragenter", function () {
